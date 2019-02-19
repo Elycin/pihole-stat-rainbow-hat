@@ -4,7 +4,7 @@ This script in this repository allows for displaying how many DNS requests are b
 ![](IMG_20190219_143319.jpg)
 
 ### Installation
-This repository makes use of Python 3 and libraries for the pihole and rainbow hat.
+This repository makes use of Python 3 and libraries for the PiHole and Rainbow HAT.
 ```python
 # Install PiHole API
 python3 -m pip install --no-cache-dir PiHole-api
