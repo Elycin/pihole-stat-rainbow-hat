@@ -109,7 +109,7 @@ class DisplayPercentage:
             time.sleep(self.__update_frequency)
 
         # Update the running variable to mark that we have stopped.
-        self.__running = True
+        self.__running = False
 
 
 # If the script is not invoked from another class, we're running it directly.
