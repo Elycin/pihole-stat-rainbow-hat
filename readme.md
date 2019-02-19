@@ -9,7 +9,6 @@ This repository makes use of Python 3 and libraries for the PiHole and Rainbow H
 # Install PiHole API
 python3 -m pip install --no-cache-dir PiHole-api
 
-
 # Install Rainbow HAT
 python3 -m pip install rainbowhat
 
