@@ -122,11 +122,13 @@ if __name__ == "__main__":
     )
 
     # Optionally, you can also provide the server and password separately.
+    #
     # script.set_server("127.0.0.1")
     # script.set_password("your_password_here")
 
     # Set the update frequency
-    script.set_update_frequency(10)
+    #
+    # script.set_update_frequency(10)
 
     # Start the work.
     script.work()
