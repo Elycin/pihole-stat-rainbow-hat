@@ -8,12 +8,16 @@ import pihole
 
 # Class
 class DisplayPercentage:
-    def __init__(self):
-        self.__server = None
+    def __init__(self, server=None, password=None):
+        self.__server = server
         self.__update_interval = None
         self.__running = None
         self.__request_stop = False
-        self.__pihole_interface = None
+
+        # Check if initialized variables
+        if self.__server is not None and password is not None:
+            self.__pihole_interface = pihole.PiHole(self.__server)
+            self.__pihole_interface.authenticate(password)
 
     def set_server(self, server):
         if self.__running:
@@ -91,12 +95,15 @@ class DisplayPercentage:
 
 
 if __name__ == "__main__":
-    # Instantiate the class
-    script = DisplayPercentage()
+    # Instantiate the class - You can also provide the server and password via the constructor
+    script = DisplayPercentage(
+        server="127.0.0.1",
+        password="your_password_here"
+    )
 
-    # Set the server that the pihole operates on.
-    script.set_server("127.0.0.1")
-    script.set_password("your_password_here")
+    # Optionally, you can also provide the server and password separately.
+    # script.set_server("127.0.0.1")
+    # script.set_password("your_password_here")
 
     # Set the update frequency
     script.set_update_interval(10)
