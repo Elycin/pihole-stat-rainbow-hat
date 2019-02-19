@@ -75,16 +75,26 @@ class DisplayPercentage:
         self.__running = True
 
         while not self.__request_stop:
-            # Get the percentage
-            percentage = round(self.get_percentage(), 2)
+            # Get the raw percentage
+            raw_percentage = self.get_percentage()
+
+            # Determine the number of decimals we should use.
+            if int(raw_percentage) < 10:
+                precision = 3
+            else:
+                precision = 2
+
+            # Format the percentage based on the precision
+            formatted_percentage = round(raw_percentage, precision)
 
             # Update the rainbow hat
             rainbowhat.display.clear()
-            rainbowhat.display.print_float(percentage)
+            rainbowhat.display.print_float(formatted_percentage)
             rainbowhat.display.show()
 
             # Print to the console.
-            print("Rainbow HAT has been updated successfully: %.2f%% of DNS requests have been blocked." % percentage)
+            print("Rainbow HAT has been updated successfully: %s%% of DNS requests have been blocked."
+                  % formatted_percentage)
             print()
 
             # Wait for the next run
