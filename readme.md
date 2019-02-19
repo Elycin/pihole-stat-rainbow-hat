@@ -5,7 +5,7 @@ This script in this repository allows for displaying how many DNS requests are b
 
 ### Installation
 This repository makes use of Python 3 and libraries for the PiHole and Rainbow HAT.
-```python
+```bash
 # Install PiHole API
 python3 -m pip install --no-cache-dir PiHole-api
 
@@ -28,6 +28,6 @@ python3 ./pihole-display-percentage.py
 ### Starting at boot
 1. Make sure you have the `screen` command installed.
 2. Append the following line to your crontab.
-```
+```bash
 @reboot screen -S pihole_script -d -m /path/to/repository/pihole-display-percentage.py
 ```
