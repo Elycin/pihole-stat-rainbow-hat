@@ -8,7 +8,7 @@ import sys
 
 
 # The main class of the project.
-class DisplayPercentage:
+class PiholeStatRainbowHat:
     def __init__(self, server=None, password=None, update_frequency=10):
         self.__update_frequency = update_frequency
         self.__running = None
@@ -123,21 +123,11 @@ class DisplayPercentage:
 
 # If the script is not invoked from another class, we're running it directly.
 if __name__ == "__main__":
-    # Instantiate the class - You can also provide the server and password via the constructor
-    script = DisplayPercentage(
+
+    # Please see the examples for multiple methods of utilizing this script.
+    app = PiholeStatRainbowHat(
         server="127.0.0.1",
         password="your_password_here",
         update_frequency=10
     )
-
-    # Optionally, you can also provide the server and password separately.
-    #
-    # script.set_server("127.0.0.1")
-    # script.set_password("your_password_here")
-
-    # Set the update frequency
-    #
-    # script.set_update_frequency(10)
-
-    # Start the work.
-    script.work()
+    app.work()
