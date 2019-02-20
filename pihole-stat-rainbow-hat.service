@@ -4,7 +4,7 @@ After=network.target
 
 [Service]
 Type=idle
-ExecStart={python3} {directory}/pihole-display-percentage.py
+ExecStart={python3} {directory}/pihole_stat_rainbow_hat.py
 
 [Install]
 WantedBy=multi-user.target
