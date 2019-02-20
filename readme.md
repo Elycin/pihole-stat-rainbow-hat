@@ -19,7 +19,7 @@ git clone https://github.com/elycin/pihole-stat-rainbow-hat.git
 cd pihole-stat-rainbow-hat
 
 # Edit the script's very bottom and specify the administration password.
-nano pihole-display-percentage.py
+nano pihole_stat_rainbow_hat.py
 
 # Run the script with Python 3
 python3 ./pihole_stat_rainbow_hat.py
