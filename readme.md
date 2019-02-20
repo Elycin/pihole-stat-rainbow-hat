@@ -1,7 +1,7 @@
 # PiHole Statistics for Pimoroni Rainbow HAT
 This script in this repository allows for displaying how many DNS requests are being blocked on your [PiHole](https://pi-hole.net/) in the form of a percentage on your [Rainbow HAT](https://shop.pimoroni.com/products/rainbow-hat-for-android-things).
 
-![](IMG_20190219_143319.jpg)
+![](example.jpg)
 
 ### Installation
 This repository makes use of Python 3 and libraries for the PiHole and Rainbow HAT.
