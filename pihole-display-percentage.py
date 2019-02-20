@@ -4,39 +4,43 @@
 import time
 import rainbowhat
 import pihole
+import sys
 
 
 # The main class of the project.
 class DisplayPercentage:
     def __init__(self, server=None, password=None, update_frequency=10):
-        self.__server = server
         self.__update_frequency = update_frequency
         self.__running = None
         self.__request_stop = False
+        self.__pihole_interface = None
 
         # Check if initialized variables
-        if self.__server is not None and password is not None:
-            self.__pihole_interface = pihole.PiHole(self.__server)
-            self.__pihole_interface.authenticate(password)
+        if server is not None and password is not None:
+            self.set_server(server=server)
+            self.set_password(password=password)
 
     # Set the server where the PiHole panel is.
     def set_server(self, server):
         if self.__running:
             print("Please stop the script before running.")
         else:
-            self.__server = server
-            self.__pihole_interface = pihole.PiHole(self.__server)
-
-    # Get the specified server - API
-    def get_server(self):
-        return self.__server
+            try:
+                self.__pihole_interface = pihole.PiHole(server)
+                print("Instantiated new instance of Pi-hole API.")
+            except:
+                sys.stderr.print("There was a problem while attempting to connect to the specified Pi-hole server.")
 
     # Set the administration password for the PiHole Interface so this script can use it.
     def set_password(self, password):
-        if not self.__server:
-            print("Please specify a server before providing a password.")
+        if self.__running:
+            print("Please stop the script before running.")
         else:
-            self.__pihole_interface.authenticate(password)
+            try:
+                self.__pihole_interface.authenticate(password)
+                print("Authentication succeeded.")
+            except:
+                sys.stderr.print("Invalid password while attempting to authenticate with Pi-hole API.")
 
     # Set the frequency in seconds of when the display should be updated.
     def set_update_frequency(self, frequency_in_seconds):
@@ -83,27 +87,32 @@ class DisplayPercentage:
         self.__running = True
 
         while not self.__request_stop:
-            # Get the raw percentage
-            raw_percentage = self.get_percentage()
+            try:
+                # Get the raw percentage
+                raw_percentage = self.get_percentage()
 
-            # Determine the number of decimals we should use.
-            if int(raw_percentage) < 10:
-                precision = 3
-            else:
-                precision = 2
+                # Determine the number of decimals we should use.
+                if int(raw_percentage) < 10:
+                    precision = 3
+                else:
+                    precision = 2
 
-            # Format the percentage based on the precision
-            formatted_percentage = round(raw_percentage, precision)
+                # Format the percentage based on the precision
+                formatted_percentage = round(raw_percentage, precision)
 
-            # Update the rainbow hat
-            rainbowhat.display.clear()
-            rainbowhat.display.print_float(formatted_percentage)
-            rainbowhat.display.show()
+                # Update the rainbow hat
+                rainbowhat.display.clear()
+                rainbowhat.display.print_float(formatted_percentage)
+                rainbowhat.display.show()
 
-            # Print to the console.
-            print("Rainbow HAT has been updated successfully: %s%% of DNS requests have been blocked."
-                  % formatted_percentage)
-            print()
+                # Print to the console.
+                print("Rainbow HAT has been updated successfully: %s%% of DNS requests have been blocked."
+                      % formatted_percentage)
+                print()
+            except:
+                rainbowhat.display.clear()
+                rainbowhat.display.print_string('ERR')
+                rainbowhat.display.show()
 
             # Wait for the next run
             time.sleep(self.__update_frequency)
