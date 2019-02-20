@@ -22,7 +22,7 @@ cd pihole-stat-rainbow-hat
 nano pihole-display-percentage.py
 
 # Run the script with Python 3
-python3 ./pihole-display-percentage.py
+python3 ./pihole_stat_rainbow_hat.py
 ```
 
 ### Starting at boot
