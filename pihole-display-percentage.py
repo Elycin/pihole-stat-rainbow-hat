@@ -111,7 +111,7 @@ class DisplayPercentage:
                 print()
             except:
                 rainbowhat.display.clear()
-                rainbowhat.display.print_string('ERR')
+                rainbowhat.display.print_str('ERR')
                 rainbowhat.display.show()
 
             # Wait for the next run
