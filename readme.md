@@ -26,8 +26,7 @@ python3 ./pihole-display-percentage.py
 ```
 
 ### Starting at boot
-1. Make sure you have the `screen` command installed.
-2. Append the following line to your crontab.
 ```bash
-@reboot screen -S pihole_script -d -m /path/to/repository/pihole-display-percentage.py
+# Run the following command to create a systemd service that will run the script at boot time.
+bash create-service.sh
 ```
