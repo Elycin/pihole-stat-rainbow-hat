@@ -1,0 +1,10 @@
+[Unit]
+Description=Display a percentage for the pihole on the
+After=network.target
+
+[Service]
+Type=idle
+ExecStart=/usr/bin/python {directory}/pihole-display-percentage.py
+
+[Install]
+WantedBy=multi-user.target
