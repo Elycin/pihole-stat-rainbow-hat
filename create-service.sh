@@ -2,10 +2,12 @@
 
 SERVICE="pihole-stat-rainbow-hat"
 
-echo "Editing service file to contain current working directory: $PWD"
-sed -i 's/{directory}/"$PWD"/g' $PWD/$SERVICE.service
+echo "Installation directory will be $PWD"
 
-echo "Copying service file into /etc/systemd/system/..."
+echo "Editing service file to contain current working directory ..."
+sed -i "s|{directory}|$PWD|g" $PWD/$SERVICE.service
+
+echo "Copying service file into /etc/systemd/system/ ..."
 sudo cp $PWD/$SERVICE.service  /etc/systemd/system/$SERVICE.service
 
 echo "Restarting Systemd daemon..."
