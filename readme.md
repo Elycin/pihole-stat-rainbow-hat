@@ -14,6 +14,7 @@ Packages:
 
 ### Configuration
 As of a recent commit, a dedicated configuration file has been made for an easy updating process for when updates have been made for this script.  
+
 Please edit `configuration.py` and edit accordingly.
 ```python
 # IP of where the Pi-hole panel runs.
@@ -33,7 +34,8 @@ python3 ./pihole_stat_rainbow_hat.py
 ```
 
 ### Create a systemd service
-A command has been made to make this process easy and dynamically find PATH variables for your environment. Run the following command to create a service on your Raspberry Pi.
+A command has been made to make this process easy and dynamically find PATH variables for your environment.  
+Run the following command to create a service on your Raspberry Pi.
 ```bash
 bash create-service.sh
 ```
