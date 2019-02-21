@@ -33,11 +33,22 @@ If you choose to, you can manually invoke the script by running it via `python3`
 python3 ./pihole_stat_rainbow_hat.py
 ```
 
+### Updating the script
+From time to time I may choose to update the scripts to add more features.  
+You can update local version of your project by running `git pull` in the directory of the cloned repository to pull the latest changes while keeping your configuration.
+
 ### Create a systemd service
 A command has been made to make this process easy and dynamically find PATH variables for your environment.  
 Run the following command to create a service on your Raspberry Pi.
 ```bash
 bash create-service.sh
+```
+
+### Deleting the service
+Service files are created in the following path: `/etc/systemd/system/`  
+Please run the following command to delete the service from your Raspberry Pi so you can safely delete the repository without causing conflicts.
+```bash
+rm /etc/systemd/service/pihole-stat-rainbow-hat.service
 ```
 
 ### Starting the service manually
@@ -56,14 +67,3 @@ systemctl enable pihole-stat-rainbow-hat
 ```bash
 systemctl disable pihole-stat-rainbow-hat
 ```
-
-### Deleting the service
-Service files are created in the following path: `/etc/systemd/system/`  
-Please run the following command to delete the service from your Raspberry Pi so you can safely delete the repository without causing conflicts.
-```bash
-rm /etc/systemd/service/pihole-stat-rainbow-hat.service
-```
-
-### Updating the script
-From time to time I may choose to update the scripts to add more features.  
-You can update local version of your project by running `git pull` in the directory of the cloned repository to pull the latest changes while keeping your configuration.
