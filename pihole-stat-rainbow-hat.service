@@ -4,7 +4,8 @@ After=network.target
 
 [Service]
 Type=idle
-ExecStart={python3} {directory}/pihole_stat_rainbow_hat.py
+WorkingDirectory={directory}
+ExecStart={python3} pihole_stat_rainbow_hat.py
 
 [Install]
 WantedBy=multi-user.target
