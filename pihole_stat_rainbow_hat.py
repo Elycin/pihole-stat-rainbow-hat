@@ -5,6 +5,7 @@ import time
 import rainbowhat
 import pihole
 import sys
+import configuration
 
 
 # The main class of the project.
@@ -126,8 +127,8 @@ if __name__ == "__main__":
 
     # Please see the examples for multiple methods of utilizing this script.
     app = PiholeStatRainbowHat(
-        server="127.0.0.1",
-        password="your_password_here",
-        update_frequency=10
+        server=configuration.server_ip,
+        password=configuration.server_password,
+        update_frequency=configuration.update_frequency
     )
     app.work()

@@ -15,8 +15,4 @@ sudo cp $PWD/$SERVICE.service  /etc/systemd/system/$SERVICE.service
 echo "Restarting Systemd daemon..."
 sudo systemctl daemon-reload
 
-echo "Enabling run-at-boot for $SERVICE..."
-sudo systemctl enable $SERVICE
-
-echo "Starting service..."
-sudo systemctl start $SERVICE
+echo "Script has successfully created a systemd service."
