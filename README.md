@@ -67,3 +67,11 @@ systemctl enable pihole-stat-rainbow-hat
 ```bash
 systemctl disable pihole-stat-rainbow-hat
 ```
+
+---
+### Further troubleshooting:
+
+#### FileNotFoundError: [Errno 2] No such file or directory (bus = smbus.SMBus(1))
+1. Edit `/boot/config.txt`
+2. Uncomment `dtparam=i2c_arm=on`
+3. Reboot.
